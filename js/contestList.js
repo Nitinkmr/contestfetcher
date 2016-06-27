@@ -6,6 +6,7 @@ var day = date.getDate();
 console.log(day);
 var limit = 1000;
 var temp;
+var urls = [];//new Array();
 var platforms = [
   "codeforces.com",
   "codechef.com",
@@ -101,14 +102,16 @@ var tempDate = 28;
 
             $('#contestList').append(
               
-  '<div class="thecard"><div class="card-img"><img src="img/1.png">'+
+  '<div class="thecard"><div class="card-img"><img src="img/' + imgLink + '.png">'+
     '</div><div class="card-caption"><i id="like-btn" class="fa fa-thumbs-o-up"></i><span class="date">Thursday, July 16, 2015</span>'+
       '<h1>The nice sample title of this card.</h1><p>Sed posuere consectetur est at lobortis. Aenean eu leo quam.</p></div>'+
     '<a href="http://codepen.io/anon/pen/NqBPOj"><div class="card-outmore"><h5>Read more</h5><i id="outmore-icon" class="fa fa-angle-right"></i>'+
-    '</div></a></div>'
+    '</div></a></div> <a href="' + data[i].href + '" class="' + resultCount + '">click here</a>'
 
             );
-
+            urls.push(data[i].href.toString());
+              //console.log(urls[resultCount] + "pushed");
+            resultCount++;
             
           }
 
@@ -116,5 +119,25 @@ var tempDate = 28;
 
 
   }
-
+  createEventListeners();
 }
+
+function createEventListeners()
+{
+    var div = document.getElementById("contestList");
+    for(var i=0;i<resultCount;i++)
+    {
+      console.log("addEventListener");
+      var element = div.getElementsByClassName(i)[0];
+      element.addEventListener("click",function(){
+          //opentab(document.getElementById(i).href);
+          var a = urls[this.className];
+          console.log(a.toString());
+          chrome.tabs.create({ url: a });
+
+         // opentab(a);
+      });
+
+    }
+}
+
