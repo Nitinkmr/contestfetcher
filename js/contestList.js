@@ -40,6 +40,7 @@ var tempDate = 28;
     var objectDate;
     var objectMonth;
     var objectYear;
+    var found = false;
     function myFunction(data) {
       data = JSON.parse(data);
       data = data.objects;
@@ -48,87 +49,72 @@ var tempDate = 28;
       for(var i=0;i<data.length;i++)
       {
         
-        
+        found = false;
         objectMonth = data[i].end[8] + data[i].end[9];
         if(objectMonth<(month) || objectMonth>(month+2))
           continue;
    
         var name = data[i].resource.name;
-       
+        var imgLink; 
+          
          if(name==platforms[0])
          {
-           $('#contestList').append(
-            '<a target="_blank" href='+ data[i].href  + '><div class="thecard"><div class="card-img"><img src="img/codeforces.png">' + 
-          '</div><div class="card-caption"><i id="like-btn" class="fa fa-thumbs-o-up"></i><span class="date">Thursday, July 16, 2015</span>' + 
-            '<h1>The nice sample title of this card.</h1><p>Sed posuere consectetur est at lobortis. Aenean eu leo quam.</p>' + 
-          '</div><div class="card-outmore"><h5>Read more</h5><i id="outmore-icon" class="fa fa-angle-right"></i></div></div></a>' );
-          resultCount++;
-
+            imgLink = 0;
+            found = true;
          }else if(name==platforms[1])
          {
-           $('#contestList').append(
-            '<a target="_blank" href='+ data[i].href  + '><div class="thecard"><div class="card-img"><img src="img/codechef.png">' + 
-          '</div><div class="card-caption"><i id="like-btn" class="fa fa-thumbs-o-up"></i><span class="date">Thursday, July 16, 2015</span>' + 
-            '<h1>The nice sample title of this card.</h1><p>Sed posuere consectetur est at lobortis. Aenean eu leo quam.</p>' + 
-          '</div><div class="card-outmore"><h5>Read more</h5><i id="outmore-icon" class="fa fa-angle-right"></i></div></div></a>' );
-          resultCount++;
+            imgLink = 1;
+             found = true;
          }else if(name==platforms[2])
          {
-           $('#contestList').append(
-            '<a target="_blank" href='+ data[i].href  + '><div class="thecard"><div class="card-img"><img src="img/hackerrank.png">' + 
-          '</div><div class="card-caption"><i id="like-btn" class="fa fa-thumbs-o-up"></i><span class="date">Thursday, July 16, 2015</span>' + 
-            '<h1>The nice sample title of this card.</h1><p>Sed posuere consectetur est at lobortis. Aenean eu leo quam.</p>' + 
-            '</div><div class="card-outmore"><h5>Read more</h5><i id="outmore-icon" class="fa fa-angle-right"></i></div></div></a>' );
-          resultCount++;
+            imgLink = 2;
+             found = true;
          }else if(name==platforms[3])
          {
-           $('#contestList').append(
-            '<a target="_blank" href='+ data[i].href  + '><div class="thecard"><div class="card-img"><img src="img/hackerearth.png">' + 
-          '</div><div class="card-caption"><i id="like-btn" class="fa fa-thumbs-o-up"></i><span class="date">Thursday, July 16, 2015</span>' + 
-            '<h1>The nice sample title of this card.</h1><p>Sed posuere consectetur est at lobortis. Aenean eu leo quam.</p>' + 
-          '</div><div class="card-outmore"><h5>Read more</h5><i id="outmore-icon" class="fa fa-angle-right"></i></div></div></a>' );
-          resultCount++;
+            imgLink = 3;
+             found = true;
          }else if(name==platforms[4])
          {
-           $('#contestList').append(
-            '<a target="_blank" href='+ data[i].href  + '><div class="thecard"><div class="card-img"><img src="img/codejam.png">' + 
-          '</div><div class="card-caption"><i id="like-btn" class="fa fa-thumbs-o-up"></i><span class="date">Thursday, July 16, 2015</span>' + 
-            '<h1>The nice sample title of this card.</h1><p>Sed posuere consectetur est at lobortis. Aenean eu leo quam.</p>' + 
-          '</div><div class="card-outmore"><h5>Read more</h5><i id="outmore-icon" class="fa fa-angle-right"></i></div></div></a>' );
-          resultCount++;
+            imgLink = 4;
+             found = true;
          }else if(name==platforms[5])
          {
-           $('#contestList').append(
-            '<a target="_blank" href='+ data[i].href  + '><div class="thecard"><div class="card-img"><img src="img/hackercup.png">' + 
-          '</div><div class="card-caption"><i id="like-btn" class="fa fa-thumbs-o-up"></i><span class="date">Thursday, July 16, 2015</span>' + 
-            '<h1>The nice sample title of this card.</h1><p>Sed posuere consectetur est at lobortis. Aenean eu leo quam.</p>' + 
-          '</div><div class="card-outmore"><h5>Read more</h5><i id="outmore-icon" class="fa fa-angle-right"></i></div></div></a>' );
-          resultCount++;
+            imgLink = 5;
+             found = true;
          }else if(name==platforms[6])
          {
-           $('#contestList').append(
-            '<a target="_blank" href='+ data[i].href  + '><div class="thecard"><div class="card-img"><img src="img/spoj.png">' + 
-          '</div><div class="card-caption"><i id="like-btn" class="fa fa-thumbs-o-up"></i><span class="date">Thursday, July 16, 2015</span>' + 
-            '<h1>The nice sample title of this card.</h1><p>Sed posuere consectetur est at lobortis. Aenean eu leo quam.</p>' + 
-          '</div><div class="card-outmore"><h5>Read more</h5><i id="outmore-icon" class="fa fa-angle-right"></i></div></div></a>' );
-          resultCount++;
+            imgLink = 6;
+             found = true;
          }else if(name==platforms[7])
          {
-           $('#contestList').append(
-            '<a target="_blank" href='+ data[i].href  + '><div class="thecard"><div class="card-img"><img src="img/topcoder.png">' + 
-          '</div><div class="card-caption"><i id="like-btn" class="fa fa-thumbs-o-up"></i><span class="date">Thursday, July 16, 2015</span>' + 
-            '<h1>The nice sample title of this card.</h1><p>Sed posuere consectetur est at lobortis. Aenean eu leo quam.</p>' + 
-          '</div><div class="card-outmore"><h5>Read more</h5><i id="outmore-icon" class="fa fa-angle-right"></i></div></div></a>' );
-          resultCount++;
+            imgLink = 7;
+             found = true;
          }else if(name==platforms[8])
          {
-           $('#contestList').append(
-            '<a target="_blank" href='+ data[i].href  + '><div class="thecard"><div class="card-img"><img src="img/uva.png">' + 
-          '</div><div class="card-caption"><i id="like-btn" class="fa fa-thumbs-o-up"></i><span class="date">Thursday, July 16, 2015</span>' + 
-            '<h1>The nice sample title of this card.</h1><p>Sed posuere consectetur est at lobortis. Aenean eu leo quam.</p>' + 
-          '</div><div class="card-outmore"><h5>Read more</h5><i id="outmore-icon" class="fa fa-angle-right"></i></div></div></a>' );
-         resultCount++;
+            imgLink = 8;
+             found = true;
          }
+
+         if(found==true)
+         {
+
+
+            $('#contestList').append(
+              
+  '<div class="thecard"><div class="card-img"><img src="img/1.png">'+
+    '</div><div class="card-caption"><i id="like-btn" class="fa fa-thumbs-o-up"></i><span class="date">Thursday, July 16, 2015</span>'+
+      '<h1>The nice sample title of this card.</h1><p>Sed posuere consectetur est at lobortis. Aenean eu leo quam.</p></div>'+
+    '<a href="http://codepen.io/anon/pen/NqBPOj"><div class="card-outmore"><h5>Read more</h5><i id="outmore-icon" class="fa fa-angle-right"></i>'+
+    '</div></a></div>'
+
+            );
+
+            
+          }
+
+
+
+
   }
 
 }
