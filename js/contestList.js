@@ -2,6 +2,7 @@ var date = new Date();
 var year = date.getFullYear();
 console.log(year);
 var month = date.getMonth();
+console.log("month" + (month+1));
 var day = date.getDate();
 console.log(day);
 var limit = 1000;
@@ -51,10 +52,29 @@ var tempDate = 28;
       {
         
         found = false;
-        objectMonth = data[i].end[8] + data[i].end[9];
-        if(objectMonth<(month) || objectMonth>(month+2))
+        objectMonth = (data[i].end[5] + data[i].end[6]) ;
+       
+        if(objectMonth<(month+1) )// those which have finished 
+          {
+            console.log(objectMonth + "skipped");
+            continue;
+          }
+
+        objectDate = (data[i].end[8] + data[i].end[9]);
+
+        if(objectDate<day && objectMonth==(month+1))
+        {
           continue;
-   
+        }
+        var endDate = "";
+        for(var j=0;j<18;j++)
+        {
+          if(j==10)
+              endDate+=" ";
+           if(j==11)
+            continue;
+            endDate +=data[i].end[j]; 
+        }
         var name = data[i].resource.name;
         var imgLink; 
           
@@ -103,11 +123,10 @@ var tempDate = 28;
             $('#contestList').append(
               
   '<div class="thecard"><div class="card-img"><img src="img/' + imgLink + '.png">'+
-    '</div><div class="card-caption"><i id="like-btn" class="fa fa-thumbs-o-up"></i><span class="date">Thursday, July 16, 2015</span>'+
-      '<h1>The nice sample title of this card.</h1><p>Sed posuere consectetur est at lobortis. Aenean eu leo quam.</p></div>'+
-    '<a href="http://codepen.io/anon/pen/NqBPOj"><div class="card-outmore"><h5>Read more</h5><i id="outmore-icon" class="fa fa-angle-right"></i>'+
-    '</div></a></div> <a href="' + data[i].href + '" class="' + resultCount + '">click here</a>'
-
+    '</div><div class="card-caption"><span class="date">' + endDate + '</span>'+
+      '<h1>' + data[i].event + '</h1></div>'+
+    '<a href=" ' + data[i].href + '"class="' +resultCount + '"><div class="card-outmore"><h5>Go to challenge page</h5><i id="outmore-icon" class="fa fa-angle-right"></i>'+
+    '</div></a></div>'
             );
             urls.push(data[i].href.toString());
               //console.log(urls[resultCount] + "pushed");
