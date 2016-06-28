@@ -1,3 +1,4 @@
+
 var date = new Date();
 var year = date.getFullYear();
 console.log(year);
@@ -54,11 +55,17 @@ var tempDate = 28;
       data = JSON.parse(data);
       data = data.objects;
       temp = data;
-      
+
       
       for(var i=0;i<data.length;i++)
       {
-        
+
+
+
+
+
+
+
         found = false;
         objectMonth = (data[i].end[5] + data[i].end[6]) ;
         objectEndHour = data[i].end[11] + data[i].end[12];
@@ -249,5 +256,8 @@ function createEventListeners()
       });
 
     }
+    document.getElementById("loading").style.visibility="hidden";
+
+    document.getElementById("loading").innerHTML=" ";
 }
 
