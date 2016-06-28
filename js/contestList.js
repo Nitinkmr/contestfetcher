@@ -96,6 +96,9 @@ var tempDate = 28;
           
         objectStartDateItem = new Date(data[i].start[0] + data[i].start[1] + data[i].start[2] + data[i].start[3],data[i].start[5] + data[i].start[6], data[i].start[8] + data[i].start[9]);
         objectStartDateItem.setHours(data[i].start[11] + data[i].start[12]);
+        if(objectStartDateItem.getFullYear()>date.getFullYear())
+            continue;
+
          if(name==platforms[0])
          {
             imgLink = 0;
@@ -137,8 +140,8 @@ var tempDate = 28;
          if(found==true && (objectStartDateItem.getFullYear()<date.getFullYear() || (objectStartDateItem.getMonth() <= (date.getMonth() + 1) && objectStartDateItem.getDate()<= date.getDate() &&  objectStartDateItem.getHours()<=date.getHours())  ))
          {
 
-        //  console.log("day " + objectStartDateItem.getDate() + "year" + objectStartDateItem.getFullYear() + "month" + objectStartDateItem.getMonth() + " " + data[i].href) ;
-        console.log(objectEndHour + " " + objectEndMin + " " + date.getHours() + " " + date.getMinutes());
+     console.log("day " + objectStartDateItem.getDate() + "year" + objectStartDateItem.getFullYear() + "month" + objectStartDateItem.getMonth() + " " + data[i].href) ;
+   //     console.log(objectEndHour + " " + objectEndMin + " " + date.getHours() + " " + date.getMinutes());
 
             $('#contestList').append(
               
