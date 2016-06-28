@@ -233,5 +233,20 @@ function createEventListeners()
       });
 
     }
+
+    div = document.getElementById("upcoming");
+    for(var i=0;i<upcoming;i++)
+    {
+     var element = div.getElementsByClassName("u" + i)[0];
+      element.addEventListener("click",function(){
+          //opentab(document.getElementById(i).href);
+          var a = this.className.substring(1,2);
+          
+           chrome.tabs.create({ url: urls[a] });
+
+         // opentab(a);
+      });
+
+    }
 }
 
