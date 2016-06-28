@@ -148,7 +148,7 @@ var tempDate = 28;
                     {
                          $('#upcoming').append(
               
-                            '<p> upcoming</p><div class="thecard"><div class="card-img"><img src="img/' + imgLink + '.png">'+
+                            '<p> <h1>upcoming</h1></p><div class="thecard"><div class="card-img"><img src="img/' + imgLink + '.png">'+
                               '</div><div class="card-caption"><h1><span class="date">Starts on ' + startDate + '</span></h1>' + '<h1><span class="date"> ends on ' + endDate + '</span></h1>'+
                                 '<h1>' + data[i].event + '</h1></div>'+
                               '<a href=" ' + data[i].href + '"class="u' + upcoming + '"><div class="card-outmore"><h5>Go to challenge page</h5><i id="outmore-icon" class="fa fa-angle-right"></i>'+
@@ -164,7 +164,7 @@ var tempDate = 28;
 
                    $('#upcoming').append(
               
-                      '<p> upcoming</p><div class="thecard"><div class="card-img"><img src="img/' + imgLink + '.png">'+
+                      '<p><h1>upcoming</h1></p><div class="thecard"><div class="card-img"><img src="img/' + imgLink + '.png">'+
                         '</div><div class="card-caption"><h1><span class="date">Starts on ' + startDate + '</span></h1>' + '<h1><span class="date"> ends on ' + endDate + '</span></h1>'+
                           '<h1>' + data[i].event + '</h1></div>'+
                         '<a href=" ' + data[i].href + '"class="u' + upcoming + '"><div class="card-outmore"><h5>Go to challenge page</h5><i id="outmore-icon" class="fa fa-angle-right"></i>'+
@@ -181,7 +181,7 @@ var tempDate = 28;
 
             $('#ongoing').append(
               
-  '<p> ongoing</p><div class="thecard"><div class="card-img"><img src="img/' + imgLink + '.png">'+
+  '<p> <h1>ongoing</h1></p><div class="thecard"><div class="card-img"><img src="img/' + imgLink + '.png">'+
     '</div><div class="card-caption"><h1><span class="date">Starts on ' + startDate + '</span></h1>' + '<h1><span class="date"> ends on ' + endDate + '</span></h1>'+
       '<h1>' + data[i].event + '</h1></div>'+
     '<a href=" ' + data[i].href + '"class="o' + ongoing + '"><div class="card-outmore"><h5>Go to challenge page</h5><i id="outmore-icon" class="fa fa-angle-right"></i>'+
@@ -198,7 +198,7 @@ var tempDate = 28;
               continue;
                         $('#upcoming').append(
               
-  '<p> upcoming</p><div class="thecard"><div class="card-img"><img src="img/' + imgLink + '.png">'+
+  '<p> <h1>upcoming</h1></p><div class="thecard"><div class="card-img"><img src="img/' + imgLink + '.png">'+
     '</div><div class="card-caption"><h1><span class="date">Starts on ' + startDate + '</span></h1>' + '<h1><span class="date"> ends on ' + endDate + '</span></h1>'+
       '<h1>' + data[i].event + '</h1></div>'+
     '<a href=" ' + data[i].href + '"class="u' + upcoming + '"><div class="card-outmore"><h5>Go to challenge page</h5><i id="outmore-icon" class="fa fa-angle-right"></i>'+
