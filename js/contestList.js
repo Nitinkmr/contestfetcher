@@ -151,7 +151,7 @@ var tempDate = 28;
                             '<p> upcoming</p><div class="thecard"><div class="card-img"><img src="img/' + imgLink + '.png">'+
                               '</div><div class="card-caption"><h1><span class="date">Starts on ' + startDate + '</span></h1>' + '<h1><span class="date"> ends on ' + endDate + '</span></h1>'+
                                 '<h1>' + data[i].event + '</h1></div>'+
-                              '<a href=" ' + data[i].href + '"class=u"' + upcoming + '"><div class="card-outmore"><h5>Go to challenge page</h5><i id="outmore-icon" class="fa fa-angle-right"></i>'+
+                              '<a href=" ' + data[i].href + '"class="u' + upcoming + '"><div class="card-outmore"><h5>Go to challenge page</h5><i id="outmore-icon" class="fa fa-angle-right"></i>'+
                               '</div></a></div>'
                                       );
                                       urls.push(data[i].href.toString());
@@ -167,7 +167,7 @@ var tempDate = 28;
                       '<p> upcoming</p><div class="thecard"><div class="card-img"><img src="img/' + imgLink + '.png">'+
                         '</div><div class="card-caption"><h1><span class="date">Starts on ' + startDate + '</span></h1>' + '<h1><span class="date"> ends on ' + endDate + '</span></h1>'+
                           '<h1>' + data[i].event + '</h1></div>'+
-                        '<a href=" ' + data[i].href + '"class=u"' + upcoming + '"><div class="card-outmore"><h5>Go to challenge page</h5><i id="outmore-icon" class="fa fa-angle-right"></i>'+
+                        '<a href=" ' + data[i].href + '"class="u' + upcoming + '"><div class="card-outmore"><h5>Go to challenge page</h5><i id="outmore-icon" class="fa fa-angle-right"></i>'+
                         '</div></a></div>'
                                 );
                                 urls.push(data[i].href.toString());
@@ -184,7 +184,7 @@ var tempDate = 28;
   '<p> ongoing</p><div class="thecard"><div class="card-img"><img src="img/' + imgLink + '.png">'+
     '</div><div class="card-caption"><h1><span class="date">Starts on ' + startDate + '</span></h1>' + '<h1><span class="date"> ends on ' + endDate + '</span></h1>'+
       '<h1>' + data[i].event + '</h1></div>'+
-    '<a href=" ' + data[i].href + '"class=o"' + ongoing + '"><div class="card-outmore"><h5>Go to challenge page</h5><i id="outmore-icon" class="fa fa-angle-right"></i>'+
+    '<a href=" ' + data[i].href + '"class="o' + ongoing + '"><div class="card-outmore"><h5>Go to challenge page</h5><i id="outmore-icon" class="fa fa-angle-right"></i>'+
     '</div></a></div>'
             );
             urls.push(data[i].href.toString());
@@ -201,7 +201,7 @@ var tempDate = 28;
   '<p> upcoming</p><div class="thecard"><div class="card-img"><img src="img/' + imgLink + '.png">'+
     '</div><div class="card-caption"><h1><span class="date">Starts on ' + startDate + '</span></h1>' + '<h1><span class="date"> ends on ' + endDate + '</span></h1>'+
       '<h1>' + data[i].event + '</h1></div>'+
-    '<a href=" ' + data[i].href + '"class=u"' + upcoming + '"><div class="card-outmore"><h5>Go to challenge page</h5><i id="outmore-icon" class="fa fa-angle-right"></i>'+
+    '<a href=" ' + data[i].href + '"class="u' + upcoming + '"><div class="card-outmore"><h5>Go to challenge page</h5><i id="outmore-icon" class="fa fa-angle-right"></i>'+
     '</div></a></div>'
             );
             urls.push(data[i].href.toString());
@@ -220,13 +220,14 @@ console.log(resultCount);
 function createEventListeners()
 {
     var div = document.getElementById("ongoing");
-    for(var i=0;i<resultCount;i++)
+    for(var i=0;i<ongoing;i++)
     {
-     var element = div.getElementsByClassName(i)[0];
+     var element = div.getElementsByClassName("o" + i)[0];
       element.addEventListener("click",function(){
           //opentab(document.getElementById(i).href);
-          var a = urls[this.className];
-           chrome.tabs.create({ url: a });
+          var a = this.className.substring(1,2);
+          
+           chrome.tabs.create({ url: urls[a] });
 
          // opentab(a);
       });
