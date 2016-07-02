@@ -1,4 +1,4 @@
-
+/*
 var date = new Date();
 var year = date.getFullYear();
 console.log(year);
@@ -261,3 +261,196 @@ function createEventListeners()
     document.getElementById("loading").innerHTML=" ";
 }
 
+*/
+
+var platforms = [
+  "CODEFORCES",
+  "CODECHEF",
+  "HACKERRANK",
+  "HACKEREARTH",
+  "google.com/codejam",
+  "facebook.com/hackercup",
+  "spoj.pl",
+  "topcoder.com",
+  "uva.onlinejudge.org"  
+];
+
+var url = "http://contesttrackerapi.herokuapp.com/";
+var temp;
+var numUpcoming=0,numOngoing=0;
+var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange=function()
+     {
+        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+            myFunction(xmlhttp.responseText);
+        }
+     }
+    
+    xmlhttp.open("GET", url, true);
+    xmlhttp.send();
+
+    
+    function myFunction(data) {
+    data = JSON.parse(data);
+    temp = data;
+    var ongoing = data.result.ongoing;
+    var name ;
+    for(var i=0;i<ongoing.length;i++)
+    {
+      name = ongoing[i].Platform;
+        
+      if(name==platforms[0])
+         {
+            imgLink = 0;
+            found = true;
+         }else if(name==platforms[1])
+         {
+            imgLink = 1;
+             found = true;
+         }else if(name==platforms[2])
+         {
+            imgLink = 2;
+             found = true;
+         }else if(name==platforms[3])
+         {
+            imgLink = 3;
+             found = true;
+         }else if(name==platforms[4])
+         {
+            imgLink = 4;
+             found = true;
+         }else if(name==platforms[5])
+         {
+            imgLink = 5;
+             found = true;
+         }else if(name==platforms[6])
+         {
+            imgLink = 6;
+             found = true;
+         }else if(name==platforms[7])
+         {
+            imgLink = 7;
+             found = true;
+         }else if(name==platforms[8])
+         {
+            imgLink = 8;
+             found = true;
+         }
+         
+
+    $('#ongoing').append(
+              
+  '<p> <h1>ongoing</h1></p><div class="thecard"><div class="card-img"><img src="img/' + imgLink + '.png">'+
+    '</div><div class="card-caption"><h1><span class="date">Ends on ' + ongoing[i].EndTime + '</span></h1>' + ''+
+      '<h1>' + ongoing[i].Name + '</h1></div>'+
+    '<a href=" ' + ongoing[i].url + '"class="o' + numOngoing + '"><div class="card-outmore"><h5>Go to challenge page</h5><i id="outmore-icon" class="fa fa-angle-right"></i>'+
+    '</div></a></div>'
+            );
+     //       urls.push(data[i].href.toString());
+        
+            numOngoing++;
+
+    }
+
+    var upcoming = data.result.upcoming;
+    
+    for(var i=0;i<upcoming.length;i++)
+    {
+      name = upcoming[i].Platform;
+        
+      if(name==platforms[0])
+         {
+            imgLink = 0;
+            found = true;
+         }else if(name==platforms[1])
+         {
+            imgLink = 1;
+             found = true;
+         }else if(name==platforms[2])
+         {
+            imgLink = 2;
+             found = true;
+         }else if(name==platforms[3])
+         {
+            imgLink = 3;
+             found = true;
+         }else if(name==platforms[4])
+         {
+            imgLink = 4;
+             found = true;
+         }else if(name==platforms[5])
+         {
+            imgLink = 5;
+             found = true;
+         }else if(name==platforms[6])
+         {
+            imgLink = 6;
+             found = true;
+         }else if(name==platforms[7])
+         {
+            imgLink = 7;
+             found = true;
+         }else if(name==platforms[8])
+         {
+            imgLink = 8;
+             found = true;
+         }
+         
+
+    $('#upcoming').append(
+              
+  '<p> <h1>upcoming</h1></p><div class="thecard"><div class="card-img"><img src="img/' + imgLink + '.png">'+
+    '</div><div class="card-caption"><h1><span class="date">Ends on ' + upcoming[i].EndTime + '</span></h1>' + ''+
+      '<h1>' + upcoming[i].Name + '</h1></div>'+
+    '<a href=" ' + upcoming[i].url + '"class="u' + numUpcoming  + '"><div class="card-outmore"><h5>Go to challenge page</h5><i id="outmore-icon" class="fa fa-angle-right"></i>'+
+    '</div></a></div>'
+            );
+       //     urls.push(data[i].href.toString());
+        
+            numUpcoming++;
+
+    }
+
+
+    document.getElementById("loading").visibility = "hidden";
+    createEventListeners();
+    }
+
+
+
+function createEventListeners()
+{
+    var div = document.getElementById("ongoing");
+    temp = temp.result;
+    for(var i=0;i<temp.ongoing.length;i++)
+    {
+     var element = div.getElementsByClassName("o" + i)[0];
+      element.addEventListener("click",function(){
+          //opentab(document.getElementById(i).href);
+          //var a = this.className.substring(1,2);
+          
+           chrome.tabs.create({ url: temp.ongoing[i].url });
+
+         // opentab(a);
+      });
+
+    }
+
+    div = document.getElementById("upcoming");
+    for(var i=0;i<temp.upcoming.length;i++)
+    {
+     var element = div.getElementsByClassName("u" + i)[0];
+      element.addEventListener("click",function(){
+          //opentab(document.getElementById(i).href);
+          var a = this.className.substring(1,2);
+          
+           chrome.tabs.create({ url: temp.upcoming[i].url });
+
+         // opentab(a);
+      });
+
+    }
+    document.getElementById("loading").style.visibility="hidden";
+
+    document.getElementById("loading").innerHTML=" ";
+}

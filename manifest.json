@@ -14,6 +14,6 @@
  	 "http://clist.by/",
  	 "tabs" 
  ],
-"content_security_policy": "script-src 'self' https://clist.by/api/v1/jsonp/contest/?username=nitin&api_key=b1361c1467e8bfe2d4a2b181aa95c1bfa1e9577d; object-src 'self'"
+"content_security_policy": "script-src 'self' http://contesttrackerapi.herokuapp.com/; object-src 'self'"
 
 }
